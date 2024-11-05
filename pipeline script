@@ -1,0 +1,17 @@
+pipeline {
+    agent {
+        label 'slave'
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/sivasaikumar111/project1.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+    }
+}
