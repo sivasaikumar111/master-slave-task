@@ -1,0 +1,5 @@
+To connect the master with slave in jenkins we can uisng launch agent by connecting it to the controller option while creating node in launch method
+go dashboard manage jenkins in security go to agents and make it as fixed and give port number as 40933 and save it
+curl -sO http://3.110.185.5:8080/jnlpJars/agent.jar
+java -jar agent.jar -url http://3.110.185.5:8080/ -secret 7838470352c13b4b2be447bc1476577571d59d5b643b3f34c9fe7f78e51328b5 -name sss -webSocket -workDir "/usr/jen"
+excute the above command in your slave terminal so that it will connect to the jenkins master and the node will be in online
