@@ -1,0 +1,12 @@
+Firstly take the ec2 instance of ubuntu flavor with t2 medium without key pair option and name it as master launch the instance
+Now go to the instance and install java, jenkins then start the jenkins using systemctl start jenkins
+Open a new tab paste the public ip address in the tab and add :8080 to it to launch jenkins
+After doing the intial step go back to jenkins ec2 instance in that use the command ssh-keygen to generate ssh keys 
+Launch the new instance name it as slave continue and launch the instance without providing any key pair
+Go to the master instance go to .ssh directory using cd .ssh command there we have private key and public key read the private key uisng 'cat filename' copy the key
+Go to slave instance go to .ssh directory use command vi authorized_key add the copied key from the master and save it
+The setup is done do all this will staying in as a ubuntu user only to aviod errors
+In jenkins dashboard go to manage jenkins click on node click on create new node give the name of the node and add it
+In root directory give the where the job has to run ex: /home/ubuntu/jenkins. give any label name in usage select only build jobs with label expressions in launch via ssh.
+In the ssh give the public ip address there and add the credintials in credintials use the public key in host verification key select non-verification key
+Finally node will be in online and the connection between master and slave is completed.
